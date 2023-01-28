@@ -16,6 +16,16 @@ public class UserDTO {
     private String email;
     private String city;
     private AccountStatus status;
+    private String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public long getId() {
         return id;
     }

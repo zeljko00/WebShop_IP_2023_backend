@@ -8,7 +8,7 @@ import unibl.etf.ip.webshop_ip2023.model.User;
 import unibl.etf.ip.webshop_ip2023.model.dto.UserDTO;
 import unibl.etf.ip.webshop_ip2023.model.enums.AccountStatus;
 import unibl.etf.ip.webshop_ip2023.services.UserService;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +17,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private final UserDAO userDAO;
     private final ModelMapper modelMapper;
+    private final BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
 
     public UserServiceImpl(UserDAO userDAO, ModelMapper modelMapper) {
         this.userDAO = userDAO;
@@ -35,6 +36,7 @@ public class UserServiceImpl implements UserService {
     }
     public UserDTO addUser(UserDTO user){
         User userEntity=modelMapper.map(user,User.class);
+        userEntity.setPassword(encoder.encode(user.getPassword()));
         User temp = userDAO.save(userEntity);
         System.out.println(temp.getId());
         UserDTO userDTO=modelMapper.map(temp,UserDTO.class);
@@ -50,7 +52,8 @@ public class UserServiceImpl implements UserService {
         userEntity.setEmail(user.getEmail());
         userEntity.setFirstname(user.getFirstname());
         userEntity.setLastname(user.getLastname());
-        userEntity.setPassword(user.getPassword());
+        userEntity.setPassword(encoder.encode(user.getPassword()));
+        userEntity.setAvatar(user.getAvatar());
 
         User temp=userDAO.save(userEntity);
         return modelMapper.map(temp,UserDTO.class);
@@ -68,7 +71,7 @@ public class UserServiceImpl implements UserService {
         UserDTO user=findUserByUsername(username);
         if(user==null)
             return null;
-        else if(user.getPassword().equals(password))
+        else if(encoder.matches(password,user.getPassword()))
                 return user;
         else return  null;
     }
