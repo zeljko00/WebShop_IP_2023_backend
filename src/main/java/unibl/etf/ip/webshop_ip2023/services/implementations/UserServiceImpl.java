@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserDTO findUserByUsername(String username){
-        User user=userDAO.findByUsername(username);
+        User user=userDAO.findByUsernameAndStatus(username,AccountStatus.NOT_ACTIVATED);
         if(user!=null)
             return modelMapper.map(user,UserDTO.class);
         else return null;
