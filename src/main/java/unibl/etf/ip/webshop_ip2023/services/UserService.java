@@ -6,11 +6,14 @@ import java.util.List;
 
 public interface UserService {
     UserDTO findUserByUsername(String username);
-    boolean checkCredentials(String username,String password);
+    UserDTO findUserById(long id);
     UserDTO addUser(UserDTO user);
     UserDTO updateUser(UserDTO user);
     UserDTO register(UserDTO user);
     public UserDTO login(String username,String password);
     List<UserDTO> getAllUsers();
     void deleteUserById(long id);
+    UserDTO checkCredentials(String username,String password);
+    void activate(UserDTO user);
+    boolean validateCredentials(String username,String password);
 }

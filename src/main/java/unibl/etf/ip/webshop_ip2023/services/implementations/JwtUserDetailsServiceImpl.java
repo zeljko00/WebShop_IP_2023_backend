@@ -23,7 +23,7 @@ public class JwtUserDetailsServiceImpl implements JwtUserDetailsService {
     // retrieve active user info by specified username
     @Override
     public JwtUser loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user=userDAO.findByUsernameAndStatus(username, AccountStatus.ACTIVATED);
+        User user=userDAO.findByUsername(username);
         if(user!=null){
             System.out.println("Found");
             return modelMapper.map(user,JwtUser.class);
