@@ -12,7 +12,9 @@ public class Product {
     private long id;
     private String title;
     private String description;
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category", referencedColumnName = "id", nullable = false)
+    private Category category;
     private String location;
     private double price;
     private boolean unused;
@@ -25,6 +27,16 @@ public class Product {
     private boolean sold;
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<ProductImage> images;
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private List<Comment> comments;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public long getId() {
         return id;
@@ -50,11 +62,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

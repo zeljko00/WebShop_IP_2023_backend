@@ -3,6 +3,15 @@ package unibl.etf.ip.webshop_ip2023.model.dto;
 public class ProductImageDTO {
     private long id;
     private String img;
+    private long productId;
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
 
     public long getId() {
         return id;

@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 public class ProductImage {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String img;
     @ManyToOne(fetch = FetchType.LAZY)

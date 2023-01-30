@@ -8,7 +8,16 @@ import unibl.etf.ip.webshop_ip2023.model.Product;
 public class AttributeDTO {
     private long id;
     private String name;
-    private String title;
+    private String value;
+    private long productId;
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
 
     public long getId() {
         return id;
@@ -26,11 +35,11 @@ public class AttributeDTO {
         this.name = name;
     }
 
-    public String getTitle() {
-        return title;
+    public String getValue() {
+        return value;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setValue(String value) {
+        this.value = value;
     }
 }

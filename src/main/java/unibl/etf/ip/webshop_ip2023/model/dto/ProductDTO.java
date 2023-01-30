@@ -23,6 +23,15 @@ public class ProductDTO {
     private List<AttributeDTO> attributes;
     private boolean sold;
     private List<ProductImageDTO> images;
+    private List<CommentDTO>  comments;
+
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentDTO> comments) {
+        this.comments = comments;
+    }
 
     public long getId() {
         return id;

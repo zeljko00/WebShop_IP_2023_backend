@@ -62,6 +62,7 @@ public class WebSecurityConfiguration {
                 .requestMatchers(HttpMethod.GET, "/**").permitAll() //enables unauthorized requests
                 .requestMatchers(HttpMethod.POST, "/**").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/**").permitAll()
+                .requestMatchers(HttpMethod.DELETE, "/**").permitAll()
 //                        .antMatchers("/api/v1/auth/**").permitAll()
 
                 .anyRequest()

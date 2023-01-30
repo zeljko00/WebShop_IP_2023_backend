@@ -3,6 +3,8 @@ package unibl.etf.ip.webshop_ip2023.model;
 import jakarta.persistence.*;
 import unibl.etf.ip.webshop_ip2023.model.enums.AccountStatus;
 
+import java.util.List;
+
 @Entity
 public class User {
     @Id
@@ -18,6 +20,26 @@ public class User {
     @Enumerated(EnumType.STRING)
     private AccountStatus status;
     private String avatar;
+    @OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
+    private List<Product> products;
+    @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
+    private List<Comment> comments;
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     public String getAvatar() {
         return avatar;

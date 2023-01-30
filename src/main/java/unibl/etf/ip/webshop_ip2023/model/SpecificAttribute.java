@@ -3,15 +3,22 @@ package unibl.etf.ip.webshop_ip2023.model;
 import jakarta.persistence.*;
 
 @Entity
-public class Attribute {
+public class SpecificAttribute {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String value;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product", referencedColumnName = "id", nullable = false)
-    private Product product;
+    @JoinColumn( name="category",referencedColumnName = "id", nullable = false)
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public long getId() {
         return id;
@@ -27,21 +34,5 @@ public class Attribute {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 }
