@@ -89,12 +89,23 @@ public class ProductServiceImpl implements ProductService {
         return result;
     }
 
-    public List<ProductDTO> getProductsBySeller(long id) {
+    public ProductDTOPage getProductsBySeller(long id, Pageable pageable) {
         try {
             User seller = userDAO.findById(id).get();
-            return productDAO.findProductsBySeller(seller).stream().map(this::map).collect(Collectors.toList());
+            Page<Product> page = productDAO.findAllBySeller(seller, pageable);
+            ProductDTOPage result = new ProductDTOPage();
+            result.setProducts(page.getContent().stream().map(this::map).collect(Collectors.toList()));
+            result.setIndex(page.getNumber());
+            result.setTotalPages(page.getTotalPages());
+            result.setTotalElements(page.getTotalElements());
+            return result;
         } catch (Exception e) {
-            return new ArrayList<ProductDTO>();
+            ProductDTOPage temp = new ProductDTOPage();
+            temp.setIndex(0);
+            temp.setTotalElements(0);
+            temp.setTotalPages(1);
+            temp.setProducts(new ArrayList<ProductDTO>());
+            return temp;
         }
     }
 
@@ -182,22 +193,22 @@ public class ProductServiceImpl implements ProductService {
                 if ("-".equals(unused) == false) {
                     if (category != null) {
                         System.out.println("price, cat, unused,title");
-                        temp = productDAO.findByPriceIsBetweenAndCategoryAndUnusedAndTitleContains(p1,p2,category,flag,title,pagable);
+                        temp = productDAO.findByPriceIsBetweenAndCategoryAndUnusedAndTitleContains(p1, p2, category, flag, title, pagable);
                         result = temp.getContent();
 
                     } else {
                         System.out.println("price,unused,title");
-                        temp = productDAO.findByPriceIsBetweenAndUnusedAndTitleContains(p1,p2,flag,title,pagable);
+                        temp = productDAO.findByPriceIsBetweenAndUnusedAndTitleContains(p1, p2, flag, title, pagable);
                         result = temp.getContent();
 
                     }
                 } else {
                     if (category != null) {
                         System.out.println("price, cat,title");
-                        temp = productDAO.findByPriceIsBetweenAndCategoryAndTitleContains(p1,p2,category,title,pagable);
+                        temp = productDAO.findByPriceIsBetweenAndCategoryAndTitleContains(p1, p2, category, title, pagable);
                         result = temp.getContent();
                     } else {
-                        temp = productDAO.findByPriceIsBetweenAndTitleContains(p1,p2,title,pagable);
+                        temp = productDAO.findByPriceIsBetweenAndTitleContains(p1, p2, title, pagable);
                         result = temp.getContent();
                     }
                 }
@@ -221,5 +232,96 @@ public class ProductServiceImpl implements ProductService {
         resultPage.setIndex(temp.getNumber());
         resultPage.setTotalElements(temp.getTotalElements());
         return resultPage;
+    }
+
+    public ProductDTOPage getFilteredBySeller(double p1, double p2, String unused, Category category, String title,long user, Pageable pageable) {
+        try {
+            User seller = userDAO.findById(user).get();
+            List<Product> result = new ArrayList<Product>();
+            List<ProductDTO> resultDTO = new ArrayList<ProductDTO>();
+            Page<Product> temp = null;
+            boolean flag = "true".equals(unused);
+            if (p1 == -1)
+                p1 = 0;
+            if (p2 == -1)
+                p2 = Double.MAX_VALUE;
+
+            if ("true".equals(unused) == false && "false".equals(unused) == false)
+                unused = "-";
+            try {
+                if ("-".equals(title)) {
+                    if ("-".equals(unused) == false) {
+                        if (category != null) {
+                            System.out.println("price, cat, unused");
+                            temp = productDAO.findFiltered5(p1, p2, category, flag,seller, pageable);
+                            result = temp.getContent();
+
+                        } else {
+                            System.out.println("price,unused");
+                            temp = productDAO.findFiltered7(p1, p2, flag,seller, pageable);
+                            result = temp.getContent();
+
+                        }
+                    } else {
+                        if (category != null) {
+                            System.out.println("price, cat");
+                            temp = productDAO.findFiltered6(p1, p2, category,seller, pageable);
+                            result = temp.getContent();
+                        } else {
+                            temp = productDAO.findFiltered8(p1, p2,seller, pageable);
+                            result = temp.getContent();
+                        }
+                    }
+                } else {
+                    if ("-".equals(unused) == false) {
+                        if (category != null) {
+                            System.out.println("price, cat, unused,title");
+                            temp = productDAO.findByPriceIsBetweenAndCategoryAndUnusedAndTitleContainsAndSeller(p1, p2, category, flag, title,seller, pageable);
+                            result = temp.getContent();
+
+                        } else {
+                            System.out.println("price,unused,title");
+                            temp = productDAO.findByPriceIsBetweenAndUnusedAndTitleContainsAndSeller(p1, p2, flag, title,seller, pageable);
+                            result = temp.getContent();
+
+                        }
+                    } else {
+                        if (category != null) {
+                            System.out.println("price, cat,title");
+                            temp = productDAO.findByPriceIsBetweenAndCategoryAndTitleContainsAndSeller(p1, p2, category, title,seller, pageable);
+                            result = temp.getContent();
+                        } else {
+                            temp = productDAO.findByPriceIsBetweenAndTitleContainsAndSeller(p1, p2, title,seller, pageable);
+                            result = temp.getContent();
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                temp = Page.empty();
+            }
+            resultDTO = result.stream().map(prod -> {
+                return map(prod);
+            }).collect(Collectors.toList());
+//        if ("-".equals(title) == false) {
+//            System.out.println("title filter");
+//            resultDTO = resultDTO.stream().filter(product -> {
+//                return product.getTitle().contains(title);
+//            }).collect(Collectors.toList());
+//        }
+            ProductDTOPage resultPage = new ProductDTOPage();
+            resultPage.setProducts(resultDTO);
+            resultPage.setTotalPages(temp.getTotalPages());
+            resultPage.setIndex(temp.getNumber());
+            resultPage.setTotalElements(temp.getTotalElements());
+            return resultPage;
+        }catch (Exception e) {
+            ProductDTOPage temp = new ProductDTOPage();
+            temp.setIndex(0);
+            temp.setTotalElements(0);
+            temp.setTotalPages(1);
+            temp.setProducts(new ArrayList<ProductDTO>());
+            return temp;
+        }
     }
 }

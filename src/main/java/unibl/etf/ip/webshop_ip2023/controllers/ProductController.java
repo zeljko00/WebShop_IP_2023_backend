@@ -28,8 +28,9 @@ public class ProductController {
     }
 
     @GetMapping("/seller/{id}")
-    public ResponseEntity<List<ProductDTO>>  getBySeller(@PathVariable("id") long id){
-        return new ResponseEntity<List<ProductDTO>>(productService.getProductsBySeller(id), HttpStatus.OK);
+    public ResponseEntity<ProductDTOPage>  getBySeller(@PathVariable("id") long id,@RequestParam(defaultValue = "0") int pageNo,
+                                                       @RequestParam(defaultValue = "10") int pageSize){
+        return new ResponseEntity<ProductDTOPage>(productService.getProductsBySeller(id,PageRequest.of(pageNo,pageSize)), HttpStatus.OK);
     }
     @GetMapping
     public ResponseEntity<ProductDTOPage>  getAll(@RequestParam(defaultValue = "0") int pageNo,
@@ -37,10 +38,16 @@ public class ProductController {
         return new ResponseEntity<ProductDTOPage>(productService.getAllProducts(PageRequest.of(pageNo,pageSize)), HttpStatus.OK);
     }
     @GetMapping("/{p1}/{p2}/{sold}/{title}/{category}")
-    public ResponseEntity<ProductDTOPage>  getAll(@PathVariable("p1") double p1, @PathVariable("p2") double p2, @PathVariable("sold") String sold, @PathVariable("title") String title, @PathVariable("category") String category, @RequestParam(defaultValue = "0") int pageNo,
+    public ResponseEntity<ProductDTOPage>  getFiltered(@PathVariable("p1") double p1, @PathVariable("p2") double p2, @PathVariable("sold") String sold, @PathVariable("title") String title, @PathVariable("category") String category, @RequestParam(defaultValue = "0") int pageNo,
                                                   @RequestParam(defaultValue = "10") int pageSize){
         Category cat=categoryService.findByName(category);
             return new ResponseEntity<ProductDTOPage>(productService.getFiltered(p1,p2,sold,cat,title, PageRequest.of(pageNo,pageSize)), HttpStatus.OK);
+    }
+    @GetMapping("/{p1}/{p2}/{sold}/{title}/{category}/{id}")
+    public ResponseEntity<ProductDTOPage>  getFilteredBySeller(@PathVariable("p1") double p1, @PathVariable("p2") double p2, @PathVariable("sold") String sold, @PathVariable("title") String title, @PathVariable("category") String category, @RequestParam(defaultValue = "0") int pageNo,
+                                                  @RequestParam(defaultValue = "10") int pageSize, @PathVariable("id") long id){
+        Category cat=categoryService.findByName(category);
+        return new ResponseEntity<ProductDTOPage>(productService.getFilteredBySeller(p1,p2,sold,cat,title,id, PageRequest.of(pageNo,pageSize)), HttpStatus.OK);
     }
     @DeleteMapping("/{user}/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("user") long user, @PathVariable("id") long id){
