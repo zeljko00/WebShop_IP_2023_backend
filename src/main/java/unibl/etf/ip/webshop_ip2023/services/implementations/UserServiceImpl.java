@@ -81,6 +81,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserDTO register(UserDTO user) {
+        System.out.println("hiting!");
         if (userDAO.findByUsername(user.getUsername()) != null)
             return null;
         else if(!validateCredentials(user.getUsername(),user.getPassword()))

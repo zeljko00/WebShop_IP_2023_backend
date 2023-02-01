@@ -18,7 +18,7 @@ public class ProductDTO {
     private String location;
     private double price;
     private boolean unused;
-    private String seller;
+    private SellerInfo seller;
     private String contact;
     private List<AttributeDTO> attributes;
     private boolean sold;
@@ -89,11 +89,11 @@ public class ProductDTO {
         this.unused = unused;
     }
 
-    public String getSeller() {
+    public SellerInfo getSeller() {
         return seller;
     }
 
-    public void setSeller(String seller) {
+    public void setSeller(SellerInfo seller) {
         this.seller = seller;
     }
 

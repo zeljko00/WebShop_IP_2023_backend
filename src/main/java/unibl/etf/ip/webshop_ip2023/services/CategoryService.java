@@ -11,4 +11,5 @@ public interface CategoryService {
     CategoryDTO updateCategory(CategoryDTO category);
     boolean deleteCategory(long category);
     Category findCategoryEntityById(long id);
+    Category findByName(String name);
 }

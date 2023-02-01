@@ -2,19 +2,19 @@ package unibl.etf.ip.webshop_ip2023.services.implementations;
 
 import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import unibl.etf.ip.webshop_ip2023.dao.CategoryDAO;
 import unibl.etf.ip.webshop_ip2023.dao.ProductDAO;
 import unibl.etf.ip.webshop_ip2023.dao.UserDAO;
 import unibl.etf.ip.webshop_ip2023.model.*;
-import unibl.etf.ip.webshop_ip2023.model.dto.AttributeDTO;
-import unibl.etf.ip.webshop_ip2023.model.dto.CommentDTO;
-import unibl.etf.ip.webshop_ip2023.model.dto.ProductDTO;
-import unibl.etf.ip.webshop_ip2023.model.dto.ProductImageDTO;
+import unibl.etf.ip.webshop_ip2023.model.dto.*;
 import unibl.etf.ip.webshop_ip2023.services.ProductService;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -58,7 +58,10 @@ public class ProductServiceImpl implements ProductService {
         System.out.println(product.getCategory());
         System.out.println(product.getCategory().getName());
         result.setCategory(product.getCategory().getName());
-        result.setSeller(product.getSeller().getFirstname() + " " + product.getSeller().getLastname());
+        SellerInfo info = new SellerInfo();
+        info.setId(product.getSeller().getId());
+        info.setInfo(product.getSeller().getFirstname() + " " + product.getSeller().getLastname());
+        result.setSeller(info);
         return result;
     }
 
@@ -73,8 +76,17 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    public List<ProductDTO> getAllProducts() {
-        return productDAO.findAll().stream().map(this::map).collect(Collectors.toList());
+    //    public List<ProductDTO> getAllProducts() {
+//        return productDAO.findAll().stream().map(this::map).collect(Collectors.toList());
+//    }
+    public ProductDTOPage getAllProducts(Pageable pageable) {
+        Page<Product> page = productDAO.findAll(pageable);
+        ProductDTOPage result = new ProductDTOPage();
+        result.setProducts(page.getContent().stream().map(this::map).collect(Collectors.toList()));
+        result.setIndex(page.getNumber());
+        result.setTotalPages(page.getTotalPages());
+        result.setTotalElements(page.getTotalElements());
+        return result;
     }
 
     public List<ProductDTO> getProductsBySeller(long id) {
@@ -103,7 +115,7 @@ public class ProductServiceImpl implements ProductService {
 
     public ProductDTO add(ProductDTO product) {
         try {
-            User seller = userDAO.findById(Long.parseLong(product.getSeller())).get();
+            User seller = userDAO.findById(product.getSeller().getId()).get();
             Category category = categoryDAO.findByName(product.getCategory());
             Product productEntity = modelMapper.map(product, Product.class);
             productEntity.setCategory(category);
@@ -128,5 +140,86 @@ public class ProductServiceImpl implements ProductService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public ProductDTOPage getFiltered(double p1, double p2, String unused, Category category, String title, Pageable pagable) {
+        List<Product> result = new ArrayList<Product>();
+        List<ProductDTO> resultDTO = new ArrayList<ProductDTO>();
+        Page<Product> temp = null;
+        boolean flag = "true".equals(unused);
+        if (p1 == -1)
+            p1 = 0;
+        if (p2 == -1)
+            p2 = Double.MAX_VALUE;
+
+        if ("true".equals(unused) == false && "false".equals(unused) == false)
+            unused = "-";
+        try {
+            if ("-".equals(title)) {
+                if ("-".equals(unused) == false) {
+                    if (category != null) {
+                        System.out.println("price, cat, unused");
+                        temp = productDAO.findFiltered1(p1, p2, category, flag, pagable);
+                        result = temp.getContent();
+
+                    } else {
+                        System.out.println("price,unused");
+                        temp = productDAO.findFiltered3(p1, p2, flag, pagable);
+                        result = temp.getContent();
+
+                    }
+                } else {
+                    if (category != null) {
+                        System.out.println("price, cat");
+                        temp = productDAO.findFiltered2(p1, p2, category, pagable);
+                        result = temp.getContent();
+                    } else {
+                        temp = productDAO.findFiltered4(p1, p2, pagable);
+                        result = temp.getContent();
+                    }
+                }
+            } else {
+                if ("-".equals(unused) == false) {
+                    if (category != null) {
+                        System.out.println("price, cat, unused,title");
+                        temp = productDAO.findByPriceIsBetweenAndCategoryAndUnusedAndTitleContains(p1,p2,category,flag,title,pagable);
+                        result = temp.getContent();
+
+                    } else {
+                        System.out.println("price,unused,title");
+                        temp = productDAO.findByPriceIsBetweenAndUnusedAndTitleContains(p1,p2,flag,title,pagable);
+                        result = temp.getContent();
+
+                    }
+                } else {
+                    if (category != null) {
+                        System.out.println("price, cat,title");
+                        temp = productDAO.findByPriceIsBetweenAndCategoryAndTitleContains(p1,p2,category,title,pagable);
+                        result = temp.getContent();
+                    } else {
+                        temp = productDAO.findByPriceIsBetweenAndTitleContains(p1,p2,title,pagable);
+                        result = temp.getContent();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            temp = Page.empty();
+        }
+        resultDTO = result.stream().map(prod -> {
+            return map(prod);
+        }).collect(Collectors.toList());
+//        if ("-".equals(title) == false) {
+//            System.out.println("title filter");
+//            resultDTO = resultDTO.stream().filter(product -> {
+//                return product.getTitle().contains(title);
+//            }).collect(Collectors.toList());
+//        }
+        ProductDTOPage resultPage = new ProductDTOPage();
+        resultPage.setProducts(resultDTO);
+        resultPage.setTotalPages(temp.getTotalPages());
+        resultPage.setIndex(temp.getNumber());
+        resultPage.setTotalElements(temp.getTotalElements());
+        return resultPage;
     }
 }

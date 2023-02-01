@@ -52,6 +52,7 @@ public class UserController {
     }
     @PostMapping("/register")
     public ResponseEntity<LoginResponse> register(@RequestBody UserDTO user){
+        System.out.println("hittin controllre");
         UserDTO userDTO=userService.register(user);
         if(userDTO!=null)
             try {

@@ -83,4 +83,15 @@ public class CategoryServiceImpl implements CategoryService {
             return null;
         }
     }
+    public Category findByName(String name){
+        try{
+            System.out.println(name);
+            Category result= categoryDAO.findByName(name);
+            if(result!=null)
+                return result;
+            else return null;
+        }catch(Exception e){
+            return null;
+        }
+    }
 }
