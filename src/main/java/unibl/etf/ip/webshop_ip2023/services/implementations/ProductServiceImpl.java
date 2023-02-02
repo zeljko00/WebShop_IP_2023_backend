@@ -41,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
                 CommentDTO commentDTO = modelMapper.map(c, CommentDTO.class);
                 commentDTO.setProductId(c.getProduct().getId());
                 commentDTO.setCreatorInfo(c.getCreator().getFirstname() + " " + c.getCreator().getLastname());
+                commentDTO.setCreatorAvatar(c.getCreator().getAvatar());
                 return commentDTO;
             }).collect(Collectors.toList()));
         if (product.getAttributes() != null)

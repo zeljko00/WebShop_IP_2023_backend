@@ -7,6 +7,15 @@ public class CommentDTO {
     private String creatorInfo;
     private String time;
     private long productId;
+    private String creatorAvatar;
+
+    public String getCreatorAvatar() {
+        return creatorAvatar;
+    }
+
+    public void setCreatorAvatar(String creatorAvatar) {
+        this.creatorAvatar = creatorAvatar;
+    }
 
     public long getProductId() {
         return productId;

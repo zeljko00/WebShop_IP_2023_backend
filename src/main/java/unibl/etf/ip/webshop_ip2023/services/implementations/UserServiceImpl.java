@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
 
     public UserDTO updateUser(UserDTO user) {
         User userEntity = userDAO.findById(user.getId()).get();
-        if (userEntity == null)
+        if (userEntity == null || !validateCredentials(user.getUsername(),user.getPassword()))
             return null;
         userEntity.setCity(user.getCity());
         userEntity.setEmail(user.getEmail());
@@ -93,6 +93,7 @@ public class UserServiceImpl implements UserService {
         }
     }
     public boolean validateCredentials(String username,String password){
+        System.out.println(username+" "+password);
         if(username.length()>=5 && password.length()>=8){
             Matcher m = p.matcher(password);
             return m.matches();

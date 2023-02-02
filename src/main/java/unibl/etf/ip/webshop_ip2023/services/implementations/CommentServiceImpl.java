@@ -12,6 +12,10 @@ import unibl.etf.ip.webshop_ip2023.model.User;
 import unibl.etf.ip.webshop_ip2023.model.dto.CommentDTO;
 import unibl.etf.ip.webshop_ip2023.services.CommentService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Service
 @Transactional
 public class CommentServiceImpl implements CommentService {
@@ -31,6 +35,8 @@ public class CommentServiceImpl implements CommentService {
         try {
             User user = userDAO.findById(Long.parseLong(commentDTO.getCreatorInfo())).get();
             Product product=productDAO.findById(commentDTO.getProductId()).get();
+            DateFormat df= new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+            commentDTO.setTime(df.format(new Date()));
             Comment comment=modelMapper.map(commentDTO, Comment.class);
             comment.setCreator(user);
             comment.setProduct(product);

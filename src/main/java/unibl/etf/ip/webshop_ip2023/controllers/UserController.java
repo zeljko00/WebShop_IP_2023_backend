@@ -70,7 +70,7 @@ public class UserController {
         //autorizacija
 
         UserDTO userDTO=userService.updateUser(user);
-        if(user==null)
+        if(userDTO==null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else
             return  new ResponseEntity<UserDTO>(userDTO,HttpStatus.OK);

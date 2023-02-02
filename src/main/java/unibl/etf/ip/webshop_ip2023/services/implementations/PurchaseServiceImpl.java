@@ -57,6 +57,7 @@ public class PurchaseServiceImpl implements PurchaseService {
         try{
             DateFormat df=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
             purchaseDTO.setTime(df.format(new Date()));
+            System.out.println(purchaseDTO.getUserID());
             User buyer=userDAO.findById(purchaseDTO.getUserID()).get();
             Product product=productDAO.findById(purchaseDTO.getProductDTO().getId()).get();
             if(buyer.getId()==product.getSeller().getId() || !productService.sellProduct(product.getId()))
