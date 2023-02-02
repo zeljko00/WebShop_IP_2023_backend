@@ -43,7 +43,7 @@ public class ProductController {
         Category cat=categoryService.findByName(category);
             return new ResponseEntity<ProductDTOPage>(productService.getFiltered(p1,p2,sold,cat,title, PageRequest.of(pageNo,pageSize)), HttpStatus.OK);
     }
-    @GetMapping("/{p1}/{p2}/{sold}/{title}/{category}/{id}")
+    @GetMapping("/seller/{p1}/{p2}/{sold}/{title}/{category}/{id}")
     public ResponseEntity<ProductDTOPage>  getFilteredBySeller(@PathVariable("p1") double p1, @PathVariable("p2") double p2, @PathVariable("sold") String sold, @PathVariable("title") String title, @PathVariable("category") String category, @RequestParam(defaultValue = "0") int pageNo,
                                                   @RequestParam(defaultValue = "10") int pageSize, @PathVariable("id") long id){
         Category cat=categoryService.findByName(category);

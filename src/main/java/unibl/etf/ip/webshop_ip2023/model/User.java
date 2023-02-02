@@ -12,7 +12,7 @@ public class User {
     private long id;
     private String firstname;
     private String lastname;
-    @Column(unique = true)
+    @Column
     private String username;
     private String password;
     private String email;
@@ -24,6 +24,16 @@ public class User {
     private List<Product> products;
     @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
     private List<Comment> comments;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Message> messages;
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
 
     public List<Product> getProducts() {
         return products;
