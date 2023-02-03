@@ -9,12 +9,11 @@ import unibl.etf.ip.webshop_ip2023.dao.ProductDAO;
 import unibl.etf.ip.webshop_ip2023.dao.UserDAO;
 import unibl.etf.ip.webshop_ip2023.model.*;
 import unibl.etf.ip.webshop_ip2023.model.dto.*;
+import unibl.etf.ip.webshop_ip2023.services.AttributeService;
 import unibl.etf.ip.webshop_ip2023.services.ProductService;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,13 +24,15 @@ public class ProductServiceImpl implements ProductService {
     private final UserDAO userDAO;
     private final CategoryDAO categoryDAO;
     private final ModelMapper modelMapper;
+    private final AttributeService attributeService;
 
 
-    public ProductServiceImpl(ProductDAO productDAO, UserDAO userDAO, CategoryDAO categoryDAO, ModelMapper modelMapper) {
+    public ProductServiceImpl(ProductDAO productDAO, UserDAO userDAO, CategoryDAO categoryDAO, ModelMapper modelMapper, AttributeService attributeService) {
         this.productDAO = productDAO;
         this.userDAO = userDAO;
         this.categoryDAO = categoryDAO;
         this.modelMapper = modelMapper;
+        this.attributeService = attributeService;
     }
 
     private ProductDTO map(Product product) {
@@ -132,7 +133,13 @@ public class ProductServiceImpl implements ProductService {
             Product productEntity = modelMapper.map(product, Product.class);
             productEntity.setCategory(category);
             productEntity.setSeller(seller);
+
             Product result = productDAO.save(productEntity);
+            if(product.getAttributes()!=null){
+            product.getAttributes().stream().forEach(a -> {
+                a.setProductId(result.getId());
+            });
+            product.getAttributes().stream().forEach(a ->{ attributeService.add(a);});}
             return map(result);
         } catch (Exception e) {
             e.printStackTrace();
