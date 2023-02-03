@@ -10,9 +10,9 @@ public class Purchase {
     private long id;
     private String payment;
     private String time;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="product", referencedColumnName = "id")
-    private Product product;
+    private String productCategory;
+    private String productTitle;
+    private double productPrice;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user", referencedColumnName = "id")
     private User user;
@@ -41,12 +41,28 @@ public class Purchase {
         this.time = time;
     }
 
-    public Product getProduct() {
-        return product;
+    public String getProductCategory() {
+        return productCategory;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    public String getProductTitle() {
+        return productTitle;
+    }
+
+    public void setProductTitle(String productTitle) {
+        this.productTitle = productTitle;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
     public User getUser() {

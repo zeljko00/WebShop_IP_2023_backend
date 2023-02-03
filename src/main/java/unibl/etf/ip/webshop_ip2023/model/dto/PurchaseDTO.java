@@ -10,8 +10,21 @@ public class PurchaseDTO {
     private long id;
     private String payment;
     private String time;
-    private ProductDTO productDTO;
+    private String productCategory;
+    private String productTitle;
+    private double productPrice;
+    private long productId;
     private long userID;
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
+
+
 
     public long getId() {
         return id;
@@ -37,12 +50,28 @@ public class PurchaseDTO {
         this.time = time;
     }
 
-    public ProductDTO getProductDTO() {
-        return productDTO;
+    public String getProductCategory() {
+        return productCategory;
     }
 
-    public void setProductDTO(ProductDTO productDTO) {
-        this.productDTO = productDTO;
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    public String getProductTitle() {
+        return productTitle;
+    }
+
+    public void setProductTitle(String productTitle) {
+        this.productTitle = productTitle;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
     public long getUserID() {

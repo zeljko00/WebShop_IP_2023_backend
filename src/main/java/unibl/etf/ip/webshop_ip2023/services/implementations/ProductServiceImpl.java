@@ -4,9 +4,7 @@ import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-import unibl.etf.ip.webshop_ip2023.dao.CategoryDAO;
-import unibl.etf.ip.webshop_ip2023.dao.ProductDAO;
-import unibl.etf.ip.webshop_ip2023.dao.UserDAO;
+import unibl.etf.ip.webshop_ip2023.dao.*;
 import unibl.etf.ip.webshop_ip2023.model.*;
 import unibl.etf.ip.webshop_ip2023.model.dto.*;
 import unibl.etf.ip.webshop_ip2023.services.AttributeService;
@@ -25,14 +23,21 @@ public class ProductServiceImpl implements ProductService {
     private final CategoryDAO categoryDAO;
     private final ModelMapper modelMapper;
     private final AttributeService attributeService;
+    private final CommentDAO commentDAO;
+    private final AttributeDAO attributeDAO;
+    private final ProductImageDAO productImageDAO;
 
 
-    public ProductServiceImpl(ProductDAO productDAO, UserDAO userDAO, CategoryDAO categoryDAO, ModelMapper modelMapper, AttributeService attributeService) {
+
+    public ProductServiceImpl(ProductDAO productDAO, UserDAO userDAO, CategoryDAO categoryDAO, ModelMapper modelMapper, AttributeService attributeService, CommentDAO commentDAO, AttributeDAO attributeDAO, ProductImageDAO productImageDAO) {
         this.productDAO = productDAO;
         this.userDAO = userDAO;
         this.categoryDAO = categoryDAO;
         this.modelMapper = modelMapper;
         this.attributeService = attributeService;
+        this.commentDAO = commentDAO;
+        this.attributeDAO = attributeDAO;
+        this.productImageDAO = productImageDAO;
     }
 
     private ProductDTO map(Product product) {
@@ -152,6 +157,18 @@ public class ProductServiceImpl implements ProductService {
             Product product = productDAO.findById(id).get();
             User seller = userDAO.findById(user).get();
             if (product.getSeller().getId() == user) {
+                List<Comment> comments=product.getComments();
+                if(comments!=null)
+                    for (Comment c: comments)
+                        commentDAO.delete(c);
+                List<Attribute> attrs=product.getAttributes();
+                if(attrs!=null)
+                    for(Attribute a: attrs)
+                        attributeDAO.delete(a);
+                List<ProductImage> images=product.getImages();
+                if(images!=null)
+                    for(ProductImage i: images)
+                        productImageDAO.delete(i);
                 productDAO.deleteById(id);
                 return true;
             } else return false;

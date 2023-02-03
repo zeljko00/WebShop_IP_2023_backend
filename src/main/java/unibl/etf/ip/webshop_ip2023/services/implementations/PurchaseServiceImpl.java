@@ -43,8 +43,6 @@ public class PurchaseServiceImpl implements PurchaseService {
             User buyer=userDAO.findById(id).get();
             return purchaseDAO.getPurchasesByUser(buyer).stream().map((Purchase p) -> {
                 PurchaseDTO temp=modelMapper.map(p,PurchaseDTO.class);
-                ProductDTO productDTO=productService.getById(p.getProduct().getId());
-                temp.setProductDTO(productDTO);
                 temp.setUserID(id);
                 return temp;
             }).collect(Collectors.toList());
@@ -59,17 +57,16 @@ public class PurchaseServiceImpl implements PurchaseService {
             purchaseDTO.setTime(df.format(new Date()));
             System.out.println(purchaseDTO.getUserID());
             User buyer=userDAO.findById(purchaseDTO.getUserID()).get();
-            Product product=productDAO.findById(purchaseDTO.getProductDTO().getId()).get();
+            Product product=productDAO.findById(purchaseDTO.getProductId()).get();
             if(buyer.getId()==product.getSeller().getId() || !productService.sellProduct(product.getId()))
                 throw  new Exception();
             Purchase purchase=modelMapper.map(purchaseDTO,Purchase.class);
-            purchase.setProduct(product);
-            purchase.setUser(buyer);
+            purchase.setProductTitle(product.getTitle());
+            purchase.setProductPrice(product.getPrice());
+            purchase.setProductCategory(product.getCategory().getName());
             Purchase result=purchaseDAO.save(purchase);
             //ne vraca sve podatke jer u zahtjevu dodju samo osnovnu podaci
             PurchaseDTO temp=modelMapper.map(result,PurchaseDTO.class);
-            ProductDTO productDTO=productService.getById(result.getProduct().getId());
-            temp.setProductDTO(productDTO);
             return temp;
         }catch(Exception e){
             e.printStackTrace();

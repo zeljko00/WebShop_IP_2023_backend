@@ -17,11 +17,11 @@ public class ProductImageController {
         this.productImageService = productImageService;
     }
 
-    @GetMapping(path = "{id}",produces = MediaType.IMAGE_PNG_VALUE)
+    @GetMapping(path = "{id}",produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getImage(@PathVariable("id") long id){
         byte[] image = productImageService.getImage(id);
         if(image!=null)
-            return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(image);
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
         else
             return  ResponseEntity.notFound().build();
     }
