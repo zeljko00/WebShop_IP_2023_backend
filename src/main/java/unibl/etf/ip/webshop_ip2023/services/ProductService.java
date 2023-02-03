@@ -13,7 +13,7 @@ public interface ProductService {
     ProductDTOPage getAllProducts(Pageable pageable);
     ProductDTOPage getProductsBySeller(long id,Pageable pageable);
     boolean sellProduct(long id);
-    ProductDTO add(ProductDTO product);
+    ProductDTO add(ProductDTO product, String rand);
     boolean delete(long id,long user);
     ProductDTO getById(long id);
     ProductDTOPage getFiltered(double p1, double p2, String sold, Category category, String title, Pageable pageable);

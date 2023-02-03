@@ -65,9 +65,9 @@ public class ProductController {
 //        else
 //            return new ResponseEntity<>(HttpStatus.CONFLICT);
 //    }
-    @PostMapping
-    public ResponseEntity<ProductDTO> add(@RequestBody ProductDTO productDTO){
-        ProductDTO result=productService.add(productDTO);
+    @PostMapping("/{rand}")
+    public ResponseEntity<ProductDTO> add(@RequestBody ProductDTO productDTO, @PathVariable("rand") String rand){
+        ProductDTO result=productService.add(productDTO,rand);
         if(result!=null)
             return new ResponseEntity<>(result,HttpStatus.OK);
         else

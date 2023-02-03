@@ -2,11 +2,12 @@ package unibl.etf.ip.webshop_ip2023.controllers;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import unibl.etf.ip.webshop_ip2023.services.ProductImageService;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/images")
@@ -24,5 +25,10 @@ public class ProductImageController {
             return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
         else
             return  ResponseEntity.notFound().build();
+    }
+    @PostMapping
+    public void uploadImage(Model model, @RequestParam("image") MultipartFile file, @RequestParam("id") String id) throws IOException {
+        System.out.println("Image upload hit! + id="+id);
+        productImageService.saveImage(file.getBytes(),id);
     }
 }

@@ -8,6 +8,7 @@ import unibl.etf.ip.webshop_ip2023.dao.*;
 import unibl.etf.ip.webshop_ip2023.model.*;
 import unibl.etf.ip.webshop_ip2023.model.dto.*;
 import unibl.etf.ip.webshop_ip2023.services.AttributeService;
+import unibl.etf.ip.webshop_ip2023.services.ProductImageService;
 import unibl.etf.ip.webshop_ip2023.services.ProductService;
 
 import java.util.ArrayList;
@@ -26,10 +27,9 @@ public class ProductServiceImpl implements ProductService {
     private final CommentDAO commentDAO;
     private final AttributeDAO attributeDAO;
     private final ProductImageDAO productImageDAO;
+    private final ProductImageService productImageService;
 
-
-
-    public ProductServiceImpl(ProductDAO productDAO, UserDAO userDAO, CategoryDAO categoryDAO, ModelMapper modelMapper, AttributeService attributeService, CommentDAO commentDAO, AttributeDAO attributeDAO, ProductImageDAO productImageDAO) {
+    public ProductServiceImpl(ProductDAO productDAO, UserDAO userDAO, CategoryDAO categoryDAO, ModelMapper modelMapper, AttributeService attributeService, CommentDAO commentDAO, AttributeDAO attributeDAO, ProductImageDAO productImageDAO, ProductImageService productImageService) {
         this.productDAO = productDAO;
         this.userDAO = userDAO;
         this.categoryDAO = categoryDAO;
@@ -38,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
         this.commentDAO = commentDAO;
         this.attributeDAO = attributeDAO;
         this.productImageDAO = productImageDAO;
+        this.productImageService = productImageService;
     }
 
     private ProductDTO map(Product product) {
@@ -131,7 +132,7 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    public ProductDTO add(ProductDTO product) {
+    public ProductDTO add(ProductDTO product,String rand) {
         try {
             User seller = userDAO.findById(product.getSeller().getId()).get();
             Category category = categoryDAO.findByName(product.getCategory());
@@ -145,6 +146,13 @@ public class ProductServiceImpl implements ProductService {
                 a.setProductId(result.getId());
             });
             product.getAttributes().stream().forEach(a ->{ attributeService.add(a);});}
+            List<String> images=productImageService.storeImages(rand,result.getId());
+            images.stream().forEach((String i) -> {
+                ProductImage temp=new ProductImage();
+                temp.setProduct(result);
+                temp.setImg(i);
+                productImageService.add(temp);
+            });
             return map(result);
         } catch (Exception e) {
             e.printStackTrace();
@@ -173,7 +181,7 @@ public class ProductServiceImpl implements ProductService {
                 return true;
             } else return false;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             return false;
         }
     }
