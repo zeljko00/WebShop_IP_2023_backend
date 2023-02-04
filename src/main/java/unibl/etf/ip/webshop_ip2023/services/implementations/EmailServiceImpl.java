@@ -6,14 +6,17 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import unibl.etf.ip.webshop_ip2023.model.dto.EmailContent;
 import unibl.etf.ip.webshop_ip2023.services.EmailService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
+
 @Service
 public class EmailServiceImpl implements EmailService {
     private final JavaMailSender javaMailSender;
-
+    private final LoggerBean loggerBean;
     @Value("${spring.mail.username}") private String sender;
 
-    public EmailServiceImpl(JavaMailSender javaMailSender) {
+    public EmailServiceImpl(JavaMailSender javaMailSender, LoggerBean loggerBean) {
         this.javaMailSender = javaMailSender;
+        this.loggerBean = loggerBean;
     }
 
     public boolean sendEmail(EmailContent emailContent){
@@ -32,6 +35,7 @@ public class EmailServiceImpl implements EmailService {
         }
         catch (Exception e) {
             e.printStackTrace();
+            loggerBean.logError(e);
             return false;
         }
     }

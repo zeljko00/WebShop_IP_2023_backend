@@ -128,4 +128,23 @@ public class ProductDTO {
     public void setImages(List<ProductImageDTO> images) {
         this.images = images;
     }
+
+    @Override
+    public String toString() {
+        return "ProductDTO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", location='" + location + '\'' +
+                ", price=" + price +
+                ", unused=" + unused +
+                ", seller=" + seller +
+                ", contact='" + contact + '\'' +
+                ", attributes=" + attributes +
+                ", sold=" + sold +
+                ", images=" + images +
+                ", comments=" + comments +
+                '}';
+    }
 }

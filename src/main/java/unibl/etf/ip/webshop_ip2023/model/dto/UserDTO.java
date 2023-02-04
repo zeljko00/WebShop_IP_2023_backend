@@ -89,4 +89,19 @@ public class UserDTO {
     public void setStatus(AccountStatus status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                ", status=" + status +
+                ", avatar='" + avatar + '\'' +
+                '}';
+    }
 }

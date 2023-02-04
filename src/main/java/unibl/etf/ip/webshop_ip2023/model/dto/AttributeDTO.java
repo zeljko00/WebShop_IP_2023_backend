@@ -42,4 +42,14 @@ public class AttributeDTO {
     public void setValue(String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "AttributeDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", value='" + value + '\'' +
+                ", productId=" + productId +
+                '}';
+    }
 }

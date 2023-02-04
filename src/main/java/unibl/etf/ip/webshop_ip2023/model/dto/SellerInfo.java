@@ -19,4 +19,12 @@ public class SellerInfo {
     public void setInfo(String info) {
         this.info = info;
     }
+
+    @Override
+    public String toString() {
+        return "SellerInfo{" +
+                "id=" + id +
+                ", info='" + info + '\'' +
+                '}';
+    }
 }

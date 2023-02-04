@@ -11,6 +11,7 @@ import unibl.etf.ip.webshop_ip2023.model.Product;
 import unibl.etf.ip.webshop_ip2023.model.User;
 import unibl.etf.ip.webshop_ip2023.model.dto.CommentDTO;
 import unibl.etf.ip.webshop_ip2023.services.CommentService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -23,12 +24,14 @@ public class CommentServiceImpl implements CommentService {
     private final UserDAO userDAO;
     private final ProductDAO productDAO;
     private final ModelMapper modelMapper;
+    private final LoggerBean loggerBean;
 
-    public CommentServiceImpl(CommentDAO commentDAO, UserDAO userDAO, ProductDAO productDAO, ModelMapper modelMapper) {
+    public CommentServiceImpl(CommentDAO commentDAO, UserDAO userDAO, ProductDAO productDAO, ModelMapper modelMapper, LoggerBean loggerBean) {
         this.commentDAO = commentDAO;
         this.userDAO = userDAO;
         this.productDAO = productDAO;
         this.modelMapper = modelMapper;
+        this.loggerBean = loggerBean;
     }
 
     public CommentDTO add(CommentDTO commentDTO){
@@ -46,6 +49,8 @@ public class CommentServiceImpl implements CommentService {
             resultDTO.setCreatorInfo(user.getFirstname()+" "+user.getLastname());
             return resultDTO;
         }catch(Exception e){
+            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }

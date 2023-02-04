@@ -16,7 +16,7 @@ import unibl.etf.ip.webshop_ip2023.security.JwtUtil;
 import unibl.etf.ip.webshop_ip2023.services.AuthenticationService;
 import unibl.etf.ip.webshop_ip2023.services.EmailService;
 import unibl.etf.ip.webshop_ip2023.services.UserService;
-import unibl.etf.ip.webshop_ip2023.model.dto.EmailContent;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -32,13 +32,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JwtUtil jwtUtil;
     private final Random generator;
     private final HashMap<String,String> activationCodes;
+    private final LoggerBean loggerBean;
 
-    public AuthenticationServiceImpl(AuthenticationManager authenticationManager, UserService userService, EmailService emailService, ModelMapper modelMapper, JwtUtil jwtUtil) {
+    public AuthenticationServiceImpl(AuthenticationManager authenticationManager, UserService userService, EmailService emailService, ModelMapper modelMapper, JwtUtil jwtUtil, LoggerBean loggerBean) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.emailService = emailService;
         this.modelMapper = modelMapper;
         this.jwtUtil = jwtUtil;
+        this.loggerBean = loggerBean;
         generator=new Random();
         activationCodes=new HashMap<String,String>();
     }
@@ -80,6 +82,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            loggerBean.logError(ex);
             throw ex;               //logovati
         }
         return loginResponse;

@@ -8,6 +8,7 @@ import unibl.etf.ip.webshop_ip2023.model.Message;
 import unibl.etf.ip.webshop_ip2023.model.User;
 import unibl.etf.ip.webshop_ip2023.model.dto.MessageDTO;
 import unibl.etf.ip.webshop_ip2023.services.MessageService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,10 +18,11 @@ import java.util.stream.Collectors;
 public class MessageServiceImpl implements MessageService {
      private final MessageDAO messageDAO;
      private final UserDAO userDAO;
-
-    public MessageServiceImpl(MessageDAO messageDAO, UserDAO userDAO) {
+    private final LoggerBean loggerBean;
+    public MessageServiceImpl(MessageDAO messageDAO, UserDAO userDAO, LoggerBean loggerBean) {
         this.messageDAO = messageDAO;
         this.userDAO = userDAO;
+        this.loggerBean = loggerBean;
     }
 
     public List<MessageDTO> getAll(){
@@ -43,6 +45,7 @@ public class MessageServiceImpl implements MessageService {
             messageDAO.save(message);
             return true;
         }catch(Exception e){
+            loggerBean.logError(e);
             return false;
         }
     }

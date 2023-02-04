@@ -10,6 +10,7 @@ import unibl.etf.ip.webshop_ip2023.model.SpecificAttribute;
 import unibl.etf.ip.webshop_ip2023.model.dto.AttributeDTO;
 import unibl.etf.ip.webshop_ip2023.model.Attribute;
 import unibl.etf.ip.webshop_ip2023.services.AttributeService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 @Service
 @Transactional
@@ -17,11 +18,13 @@ public class AttributeServiceImpl implements AttributeService {
     private final AttributeDAO attributeDAO;
     private final ProductDAO productDAO;
     private final ModelMapper modelMapper;
+    private final LoggerBean loggerBean;
 
-    public AttributeServiceImpl(AttributeDAO attributeDAO, ProductDAO productDAO, ModelMapper modelMapper) {
+    public AttributeServiceImpl(AttributeDAO attributeDAO, ProductDAO productDAO, ModelMapper modelMapper, LoggerBean loggerBean) {
         this.attributeDAO = attributeDAO;
         this.productDAO = productDAO;
         this.modelMapper = modelMapper;
+        this.loggerBean = loggerBean;
     }
 
     public AttributeDTO add(AttributeDTO attributeDTO){
@@ -43,7 +46,8 @@ public class AttributeServiceImpl implements AttributeService {
             result.setProductId(attribute.getProduct().getId());
             return result;
         }catch(Exception e){
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }

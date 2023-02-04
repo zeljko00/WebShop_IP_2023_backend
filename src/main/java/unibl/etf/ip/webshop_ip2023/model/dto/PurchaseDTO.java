@@ -81,4 +81,18 @@ public class PurchaseDTO {
     public void setUserID(long userID) {
         this.userID = userID;
     }
+
+    @Override
+    public String toString() {
+        return "PurchaseDTO{" +
+                "id=" + id +
+                ", payment='" + payment + '\'' +
+                ", time='" + time + '\'' +
+                ", productCategory='" + productCategory + '\'' +
+                ", productTitle='" + productTitle + '\'' +
+                ", productPrice=" + productPrice +
+                ", productId=" + productId +
+                ", userID=" + userID +
+                '}';
+    }
 }

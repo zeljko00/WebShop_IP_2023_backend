@@ -37,4 +37,14 @@ public class MessageDTO {
     public void setUserId(long userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "MessageDTO{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", userId=" + userId +
+                ", unread=" + unread +
+                '}';
+    }
 }

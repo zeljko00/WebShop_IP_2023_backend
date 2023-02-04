@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import unibl.etf.ip.webshop_ip2023.dao.ProductImageDAO;
 import unibl.etf.ip.webshop_ip2023.model.ProductImage;
 import unibl.etf.ip.webshop_ip2023.services.ProductImageService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -20,11 +21,13 @@ import java.util.Map;
 public class ProductImageServiceImpl implements ProductImageService {
     @Value("${images.repo}")
     private String imagesRepo;
+    private final LoggerBean loggerBean;
     private final ProductImageDAO productImageDAO;
 
     private Map<String, List<byte[]>> uploadedImages = new HashMap<String, List<byte[]>>();
 
-    public ProductImageServiceImpl(ProductImageDAO productImageDAO) {
+    public ProductImageServiceImpl(LoggerBean loggerBean, ProductImageDAO productImageDAO) {
+        this.loggerBean = loggerBean;
         this.productImageDAO = productImageDAO;
     }
 
@@ -32,6 +35,7 @@ public class ProductImageServiceImpl implements ProductImageService {
         try {
             return productImageDAO.findById(id).get();
         } catch (Exception e) {
+            loggerBean.logError(e);
             return null;
         }
     }
@@ -49,7 +53,8 @@ public class ProductImageServiceImpl implements ProductImageService {
             byte[] result = Files.readAllBytes(Paths.get(path));
             return result;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }
@@ -72,7 +77,8 @@ public class ProductImageServiceImpl implements ProductImageService {
             System.out.println("daved image for rand" + id);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return false;
         }
     }
@@ -95,8 +101,8 @@ public class ProductImageServiceImpl implements ProductImageService {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
-
+//            e.printStackTrace();
+loggerBean.logError(e);
         }
         return result;
     }

@@ -10,6 +10,7 @@ import unibl.etf.ip.webshop_ip2023.model.dto.CategoryDTO;
 import unibl.etf.ip.webshop_ip2023.model.dto.SpecificAttributeDTO;
 import unibl.etf.ip.webshop_ip2023.services.CategoryService;
 import unibl.etf.ip.webshop_ip2023.services.SpecificAttributeService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,11 +21,13 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryDAO categoryDAO;
     private final SpecificAttributeService specificAttributeService;
     private final ModelMapper  modelMapper;
+    private final LoggerBean loggerBean;
 
-    public CategoryServiceImpl(CategoryDAO categoryDAO, SpecificAttributeService specificAttributeService, ModelMapper modelMapper) {
+    public CategoryServiceImpl(CategoryDAO categoryDAO, SpecificAttributeService specificAttributeService, ModelMapper modelMapper, LoggerBean loggerBean) {
         this.categoryDAO = categoryDAO;
         this.specificAttributeService = specificAttributeService;
         this.modelMapper = modelMapper;
+        this.loggerBean = loggerBean;
     }
 
     public List<CategoryDTO> getAllCategories() {
@@ -58,6 +61,8 @@ public class CategoryServiceImpl implements CategoryService {
          }
          else return null;
         }catch(Exception e){
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }
@@ -72,6 +77,8 @@ public class CategoryServiceImpl implements CategoryService {
             }
             else return false;
         }catch(Exception e){
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return false;
         }
 
@@ -80,6 +87,8 @@ public class CategoryServiceImpl implements CategoryService {
         try{
             return categoryDAO.findById(id).get();
         }catch(Exception e){
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }
@@ -91,6 +100,8 @@ public class CategoryServiceImpl implements CategoryService {
                 return result;
             else return null;
         }catch(Exception e){
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }

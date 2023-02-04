@@ -56,4 +56,16 @@ public class CommentDTO {
     public void setTime(String time) {
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "CommentDTO{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", creatorInfo='" + creatorInfo + '\'' +
+                ", time='" + time + '\'' +
+                ", productId=" + productId +
+                ", creatorAvatar='" + creatorAvatar + '\'' +
+                '}';
+    }
 }

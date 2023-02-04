@@ -22,4 +22,11 @@ public class LoginResponse extends UserDTO{
     public int hashCode() {
         return super.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return "LoginResponse{" +
+                "token='" + token + '\'' +
+                '}';
+    }
 }

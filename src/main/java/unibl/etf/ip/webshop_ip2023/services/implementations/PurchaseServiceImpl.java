@@ -9,10 +9,10 @@ import unibl.etf.ip.webshop_ip2023.dao.UserDAO;
 import unibl.etf.ip.webshop_ip2023.model.Product;
 import unibl.etf.ip.webshop_ip2023.model.Purchase;
 import unibl.etf.ip.webshop_ip2023.model.User;
-import unibl.etf.ip.webshop_ip2023.model.dto.ProductDTO;
 import unibl.etf.ip.webshop_ip2023.model.dto.PurchaseDTO;
 import unibl.etf.ip.webshop_ip2023.services.ProductService;
 import unibl.etf.ip.webshop_ip2023.services.PurchaseService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,13 +29,15 @@ public class PurchaseServiceImpl implements PurchaseService {
     private final UserDAO userDAO;
     private final PurchaseDAO purchaseDAO;
     private final ModelMapper modelMapper;
+    private final LoggerBean loggerBean;
 
-    public PurchaseServiceImpl(ProductService productService, ProductDAO productDAO, UserDAO userDAO, PurchaseDAO purchaseDAO, ModelMapper modelMapper) {
+    public PurchaseServiceImpl(ProductService productService, ProductDAO productDAO, UserDAO userDAO, PurchaseDAO purchaseDAO, ModelMapper modelMapper, LoggerBean loggerBean) {
         this.productService = productService;
         this.productDAO = productDAO;
         this.userDAO = userDAO;
         this.purchaseDAO = purchaseDAO;
         this.modelMapper = modelMapper;
+        this.loggerBean = loggerBean;
     }
 
     public List<PurchaseDTO> getByBuyer(long id){
@@ -47,7 +49,8 @@ public class PurchaseServiceImpl implements PurchaseService {
                 return temp;
             }).collect(Collectors.toList());
         }catch(Exception e){
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return new ArrayList<PurchaseDTO>();
         }
     }
@@ -69,7 +72,8 @@ public class PurchaseServiceImpl implements PurchaseService {
             PurchaseDTO temp=modelMapper.map(result,PurchaseDTO.class);
             return temp;
         }catch(Exception e){
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }

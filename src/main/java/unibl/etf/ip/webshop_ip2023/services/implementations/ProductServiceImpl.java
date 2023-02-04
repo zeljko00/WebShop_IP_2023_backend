@@ -10,6 +10,7 @@ import unibl.etf.ip.webshop_ip2023.model.dto.*;
 import unibl.etf.ip.webshop_ip2023.services.AttributeService;
 import unibl.etf.ip.webshop_ip2023.services.ProductImageService;
 import unibl.etf.ip.webshop_ip2023.services.ProductService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,9 @@ public class ProductServiceImpl implements ProductService {
     private final AttributeDAO attributeDAO;
     private final ProductImageDAO productImageDAO;
     private final ProductImageService productImageService;
+    private final LoggerBean loggerBean;
 
-    public ProductServiceImpl(ProductDAO productDAO, UserDAO userDAO, CategoryDAO categoryDAO, ModelMapper modelMapper, AttributeService attributeService, CommentDAO commentDAO, AttributeDAO attributeDAO, ProductImageDAO productImageDAO, ProductImageService productImageService) {
+    public ProductServiceImpl(ProductDAO productDAO, UserDAO userDAO, CategoryDAO categoryDAO, ModelMapper modelMapper, AttributeService attributeService, CommentDAO commentDAO, AttributeDAO attributeDAO, ProductImageDAO productImageDAO, ProductImageService productImageService, LoggerBean loggerBean) {
         this.productDAO = productDAO;
         this.userDAO = userDAO;
         this.categoryDAO = categoryDAO;
@@ -39,6 +41,7 @@ public class ProductServiceImpl implements ProductService {
         this.attributeDAO = attributeDAO;
         this.productImageDAO = productImageDAO;
         this.productImageService = productImageService;
+        this.loggerBean = loggerBean;
     }
 
     private ProductDTO map(Product product) {
@@ -79,7 +82,8 @@ public class ProductServiceImpl implements ProductService {
             return map(product);
 
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }
@@ -108,6 +112,7 @@ public class ProductServiceImpl implements ProductService {
             result.setTotalElements(page.getTotalElements());
             return result;
         } catch (Exception e) {
+            loggerBean.logError(e);
             ProductDTOPage temp = new ProductDTOPage();
             temp.setIndex(0);
             temp.setTotalElements(0);
@@ -128,6 +133,7 @@ public class ProductServiceImpl implements ProductService {
                 return true;
             }
         } catch (Exception e) {
+            loggerBean.logError(e);
             return false;
         }
     }
@@ -155,7 +161,8 @@ public class ProductServiceImpl implements ProductService {
             });
             return map(result);
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }
@@ -182,6 +189,7 @@ public class ProductServiceImpl implements ProductService {
             } else return false;
         } catch (Exception e) {
 //            e.printStackTrace();
+            loggerBean.logError(e);
             return false;
         }
     }
@@ -247,7 +255,8 @@ public class ProductServiceImpl implements ProductService {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             temp = Page.empty();
         }
         resultDTO = result.stream().map(prod -> {
@@ -332,6 +341,7 @@ public class ProductServiceImpl implements ProductService {
             } catch (Exception e) {
                 e.printStackTrace();
                 temp = Page.empty();
+                loggerBean.logError(e);
             }
             resultDTO = result.stream().map(prod -> {
                 return map(prod);
@@ -349,6 +359,7 @@ public class ProductServiceImpl implements ProductService {
             resultPage.setTotalElements(temp.getTotalElements());
             return resultPage;
         }catch (Exception e) {
+            loggerBean.logError(e);
             ProductDTOPage temp = new ProductDTOPage();
             temp.setIndex(0);
             temp.setTotalElements(0);

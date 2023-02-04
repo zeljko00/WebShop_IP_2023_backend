@@ -30,4 +30,13 @@ public class CategoryDTO {
     public void setSpecificAttributes(List<SpecificAttributeDTO> specificAttributes) {
         this.specificAttributes = specificAttributes;
     }
+
+    @Override
+    public String toString() {
+        return "CategoryDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", specificAttributes=" + specificAttributes +
+                '}';
+    }
 }

@@ -39,4 +39,14 @@ public class ProductDTOPage {
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
     }
+
+    @Override
+    public String toString() {
+        return "ProductDTOPage{" +
+                "products=" + products +
+                ", index=" + index +
+                ", totalElements=" + totalElements +
+                ", totalPages=" + totalPages +
+                '}';
+    }
 }

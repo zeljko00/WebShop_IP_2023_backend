@@ -8,8 +8,8 @@ import unibl.etf.ip.webshop_ip2023.dao.SpecificAttributeDAO;
 import unibl.etf.ip.webshop_ip2023.model.Category;
 import unibl.etf.ip.webshop_ip2023.model.SpecificAttribute;
 import unibl.etf.ip.webshop_ip2023.model.dto.SpecificAttributeDTO;
-import unibl.etf.ip.webshop_ip2023.services.CategoryService;
 import unibl.etf.ip.webshop_ip2023.services.SpecificAttributeService;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 @Service
 @Transactional
@@ -17,11 +17,13 @@ public class SpecificAttributeServiceImpl implements SpecificAttributeService {
     private final SpecificAttributeDAO specificAttributeDAO;
     private final CategoryDAO categoryDAO;
     private final ModelMapper modelMapper;
+    private final LoggerBean loggerBean;
 
-    public SpecificAttributeServiceImpl(SpecificAttributeDAO specificAttributeDAO, CategoryDAO categoryDAO, ModelMapper modelMapper) {
+    public SpecificAttributeServiceImpl(SpecificAttributeDAO specificAttributeDAO, CategoryDAO categoryDAO, ModelMapper modelMapper, LoggerBean loggerBean) {
         this.specificAttributeDAO = specificAttributeDAO;
         this.categoryDAO = categoryDAO;
         this.modelMapper = modelMapper;
+        this.loggerBean = loggerBean;
     }
 
     public boolean delete(long id) {
@@ -32,6 +34,7 @@ public class SpecificAttributeServiceImpl implements SpecificAttributeService {
                 return true;
             } else return false;
         } catch (Exception e) {
+            loggerBean.logError(e);
             return false;
         }
     }
@@ -48,7 +51,8 @@ public class SpecificAttributeServiceImpl implements SpecificAttributeService {
             resultDTO.setCategory(result.getCategory().getId());
             return resultDTO;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            loggerBean.logError(e);
             return null;
         }
     }
@@ -69,7 +73,7 @@ public class SpecificAttributeServiceImpl implements SpecificAttributeService {
             }
             return null;
         } catch (Exception e) {
-            System.out.println("cat not found");
+            loggerBean.logError(e);
             return null;
         }
     }

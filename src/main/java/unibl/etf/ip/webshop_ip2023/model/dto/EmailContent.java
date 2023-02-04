@@ -41,4 +41,13 @@ public class EmailContent {
         this.subject = subject;
         this.content = content;
     }
+
+    @Override
+    public String toString() {
+        return "EmailContent{" +
+                "recipient='" + recipient + '\'' +
+                ", subject='" + subject + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

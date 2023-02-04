@@ -28,4 +28,13 @@ public class ProductImageDTO {
     public void setImg(String img) {
         this.img = img;
     }
+
+    @Override
+    public String toString() {
+        return "ProductImageDTO{" +
+                "id=" + id +
+                ", img='" + img + '\'' +
+                ", productId=" + productId +
+                '}';
+    }
 }

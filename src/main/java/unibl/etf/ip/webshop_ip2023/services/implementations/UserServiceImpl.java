@@ -9,6 +9,7 @@ import unibl.etf.ip.webshop_ip2023.model.dto.UserDTO;
 import unibl.etf.ip.webshop_ip2023.model.enums.AccountStatus;
 import unibl.etf.ip.webshop_ip2023.services.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,12 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     private final  Pattern p = Pattern.compile(".*[#,$,%,&,_]+.*");
+    private final LoggerBean loggerBean;
 
-    public UserServiceImpl(UserDAO userDAO, ModelMapper modelMapper) {
+    public UserServiceImpl(UserDAO userDAO, ModelMapper modelMapper, LoggerBean loggerBean) {
         this.userDAO = userDAO;
         this.modelMapper = modelMapper;
+        this.loggerBean = loggerBean;
     }
 
     public UserDTO findUserByUsername(String username) {
@@ -42,6 +45,7 @@ public class UserServiceImpl implements UserService {
             return modelMapper.map(user, UserDTO.class);
         else return null;
         }catch(Exception e){
+            loggerBean.logError(e);
             return null;
         }
     }
