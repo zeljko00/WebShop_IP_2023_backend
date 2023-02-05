@@ -1,1 +1,3 @@
 01:44:33.531 - java.util.NoSuchElementException: No value present
+12:17:41.041 - java.util.NoSuchElementException: No value present
+13:35:03.012 - org.springframework.security.authentication.BadCredentialsException: Bad credentials

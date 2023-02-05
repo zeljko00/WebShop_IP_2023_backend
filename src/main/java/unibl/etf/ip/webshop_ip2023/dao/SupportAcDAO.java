@@ -6,6 +6,6 @@ import unibl.etf.ip.webshop_ip2023.model.SupportAc;
 
 import java.util.List;
 @Repository
-public interface SupportAcDAO extends JpaRepository<SupportAc,Long> {
+public interface SupportAcDAO extends JpaRepository<SupportAc,String> {
     SupportAc findByUsernameAndPassword(String username, String password);
 }
