@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import unibl.etf.ip.webshop_ip2023.services.StatisticsService;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/statistics")
 public class StatisticsController {
@@ -19,6 +21,6 @@ private final StatisticsService statisticsService;
 
     @GetMapping
     public ResponseEntity<List<String>> statistics(){
-        return new ResponseEntity<>(statisticsService.getStatistics(), HttpStatus.OK);
+        return new ResponseEntity<>(statisticsService.getStatistics().stream().limit(100).collect(Collectors.toList()), HttpStatus.OK);
     }
 }
