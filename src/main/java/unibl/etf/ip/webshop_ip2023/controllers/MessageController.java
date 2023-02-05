@@ -21,6 +21,15 @@ public class MessageController {
     public ResponseEntity<List<MessageDTO>> getAll(){
         return  new ResponseEntity<>(messageService.getAll(), HttpStatus.OK);
     }
+    @GetMapping("/filtered")
+    public ResponseEntity<List<MessageDTO>> getAllFiltered(@RequestParam("key") String key){
+        return  new ResponseEntity<>(messageService.getAllFiltered(key), HttpStatus.OK);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> read(@PathVariable("id") long id){
+        messageService.read(id);
+        return  new ResponseEntity<>(HttpStatus.OK);
+    }
     @PostMapping
     public ResponseEntity<?> add(@RequestBody MessageDTO messageDTO){
         boolean flag=messageService.add(messageDTO);

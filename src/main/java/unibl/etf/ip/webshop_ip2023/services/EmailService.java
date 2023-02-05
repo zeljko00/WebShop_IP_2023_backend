@@ -4,4 +4,5 @@ import unibl.etf.ip.webshop_ip2023.model.dto.EmailContent;
 
 public interface EmailService {
     boolean sendEmail(EmailContent emailContent);
+    boolean sendMailFromSupport(String content, long user);
 }

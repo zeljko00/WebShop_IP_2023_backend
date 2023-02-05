@@ -30,7 +30,7 @@ public class EmailContent {
     public void setContent(String content) {
         this.content = content;
     }
-
+public EmailContent(){}
     public EmailContent(String recipient, String user,int code) {
         this.recipient = recipient;
         this.subject = ACTIVATION_EMAIL_SUBJECT;

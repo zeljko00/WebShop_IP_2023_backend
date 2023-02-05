@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface MessageService {
     List<MessageDTO> getAll();
+    List<MessageDTO> getAllFiltered(String key);
+    void read(long id);
     boolean add(MessageDTO messageDTO);
 }

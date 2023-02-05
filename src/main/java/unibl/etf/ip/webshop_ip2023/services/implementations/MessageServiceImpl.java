@@ -26,12 +26,24 @@ public class MessageServiceImpl implements MessageService {
     }
 
     public List<MessageDTO> getAll(){
-        return messageDAO.findAll().stream().map((m) -> {
+        return messageDAO.findAllByUnread(true).stream().map((m) -> {
             MessageDTO temp=new MessageDTO();
             temp.setId(m.getId());
             temp.setUnread(m.isUnread());
             temp.setContent(m.getContent());
             temp.setUserId(m.getUser().getId());
+            temp.setUser(m.getUser().getFirstname()+" "+m.getUser().getLastname());
+            return temp;
+        }).collect(Collectors.toList());
+    }
+    public List<MessageDTO> getAllFiltered(String key){
+        return messageDAO.findAllByUnreadAndContentContains(true,key).stream().map((m) -> {
+            MessageDTO temp=new MessageDTO();
+            temp.setId(m.getId());
+            temp.setUnread(m.isUnread());
+            temp.setContent(m.getContent());
+            temp.setUserId(m.getUser().getId());
+            temp.setUser(m.getUser().getFirstname()+" "+m.getUser().getLastname());
             return temp;
         }).collect(Collectors.toList());
     }
@@ -48,5 +60,13 @@ public class MessageServiceImpl implements MessageService {
             loggerBean.logError(e);
             return false;
         }
+    }
+    public void read(long id){
+try {
+    Message message = messageDAO.findById(id).get();
+    message.setUnread(false);
+    messageDAO.save(message);
+}catch(Exception e){
+e.printStackTrace();}
     }
 }

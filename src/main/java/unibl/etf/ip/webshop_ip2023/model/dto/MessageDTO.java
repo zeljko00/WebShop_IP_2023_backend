@@ -1,10 +1,20 @@
 package unibl.etf.ip.webshop_ip2023.model.dto;
 
 public class MessageDTO {
-    private int id;
+    private long id;
     private String content;
     private long userId;
     private boolean unread;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    private String user;
 
     public boolean isUnread() {
         return unread;
@@ -14,11 +24,11 @@ public class MessageDTO {
         this.unread = unread;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

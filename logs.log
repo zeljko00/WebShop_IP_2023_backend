@@ -16,3 +16,596 @@
 01:40:54.619 - logResponse: RESPONSE  method = [POST] ResponseHeaders = [{Vary=Origin}] responseBody = [null]
 01:44:33.292 - log Request: REQUEST method = [POST] path = [/WebShop/specificAttributes]  body = [SpecificAttributeDTO{id=0, name='time', category=1111}]
 01:44:33.572 - logResponse: RESPONSE  method = [POST] ResponseHeaders = [{Vary=Origin}] responseBody = [null]
+13:53:30.770 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+13:53:31.216 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=false}]]
+13:53:37.656 - log Request: REQUEST method = [GET] path = [/WebShop/messages/1] 
+13:53:43.493 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+13:53:43.509 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=false}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=false}]]
+13:54:41.791 - log Request: REQUEST method = [GET] path = [/WebShop/loggin]  parameters = [{password=passwor, username=user}] 
+13:54:41.806 - log Request: REQUEST method = [GET] path = [/WebShop/error]  parameters = [{password=passwor, username=user}] 
+13:54:41.818 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{X-Frame-Options=DENY, Cache-Control=no-cache, no-store, max-age=0, must-revalidate, X-Content-Type-Options=nosniff, Vary=Origin, Pragma=no-cache, Expires=0, X-XSS-Protection=0}] responseBody = [{timestamp=Sat Feb 04 13:54:41 CET 2023, status=404, error=Not Found, message=No message available, path=/WebShop/loggin}]
+13:54:52.039 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=passwor, username=user}] 
+13:54:52.127 - log Request: REQUEST method = [GET] path = [/WebShop/error]  parameters = [{password=passwor, username=user}] 
+13:54:52.131 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{X-Frame-Options=DENY, Cache-Control=no-cache, no-store, max-age=0, must-revalidate, X-Content-Type-Options=nosniff, Vary=Origin, Pragma=no-cache, Expires=0, X-XSS-Protection=0}] responseBody = [{timestamp=Sat Feb 04 13:54:52 CET 2023, status=500, error=Internal Server Error, trace=jakarta.servlet.ServletException: Circular view path [support]: would dispatch back to the current handler URL [/WebShop/support] again. Check your ViewResolver setup! (Hint: This may be the result of an unspecified view, due to default view name generation.)
+	at org.springframework.web.servlet.view.InternalResourceView.prepareForRendering(InternalResourceView.java:210)
+	at org.springframework.web.servlet.view.InternalResourceView.renderMergedOutputModel(InternalResourceView.java:148)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:314)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1414)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1158)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1097)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at unibl.etf.ip.webshop_ip2023.security.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+, message=Circular view path [support]: would dispatch back to the current handler URL [/WebShop/support] again. Check your ViewResolver setup! (Hint: This may be the result of an unspecified view, due to default view name generation.), path=/WebShop/support}]
+13:58:01.544 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=passwor, username=user}] 
+13:58:01.929 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [null]
+13:58:06.427 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+13:58:06.489 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@696fef20]
+23:27:44.109 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+23:27:44.561 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+23:42:35.783 - log Request: REQUEST method = [GET] path = [/WebShop/error]  parameters = [{id=1, content=bla bla}] 
+23:42:35.845 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{X-Frame-Options=DENY, Cache-Control=no-cache, no-store, max-age=0, must-revalidate, X-Content-Type-Options=nosniff, Vary=Origin, Pragma=no-cache, Expires=0, X-XSS-Protection=0, Allow=POST}] responseBody = [{timestamp=Sat Feb 04 23:42:35 CET 2023, status=405, error=Method Not Allowed, trace=org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.handleNoMatch(RequestMappingInfoHandlerMapping.java:265)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lookupHandlerMethod(AbstractHandlerMethodMapping.java:441)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.getHandlerInternal(AbstractHandlerMethodMapping.java:382)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:126)
+	at org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMapping.getHandlerInternal(RequestMappingInfoHandlerMapping.java:68)
+	at org.springframework.web.servlet.handler.AbstractHandlerMapping.getHandler(AbstractHandlerMapping.java:504)
+	at org.springframework.web.servlet.DispatcherServlet.getHandler(DispatcherServlet.java:1274)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1056)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at unibl.etf.ip.webshop_ip2023.security.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+, message=Method 'GET' is not supported., path=/WebShop/email}]
+23:42:41.843 - logResponse: RESPONSE  method = [POST] ResponseHeaders = [{X-Frame-Options=DENY, Cache-Control=no-cache, no-store, max-age=0, must-revalidate, X-Content-Type-Options=nosniff, Vary=Origin, Pragma=no-cache, Expires=0, X-XSS-Protection=0}] responseBody = [{timestamp=Sat Feb 04 23:42:41 CET 2023, status=400, error=Bad Request, trace=org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'recepient' for method parameter type long is not present
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:218)
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:193)
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:114)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:181)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:148)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:731)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at unibl.etf.ip.webshop_ip2023.security.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+, message=Required parameter 'recepient' is not present., path=/WebShop/email}]
+00:06:41.811 - log Request: REQUEST method = [GET] path = [/WebShop/error] 
+00:06:48.628 - log Request: REQUEST method = [GET] path = [/WebShop/error] 
+00:08:08.763 - log Request: REQUEST method = [GET] path = [/WebShop/error] 
+00:09:02.108 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:09:02.674 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+00:12:03.936 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:12:03.952 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+00:13:24.007 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:13:24.020 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+00:14:57.694 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:14:57.707 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+00:16:37.164 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:16:37.180 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+00:27:20.064 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=passwor, username=user}] 
+00:27:20.683 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [null]
+00:27:26.522 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:27:26.543 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@a04de99]
+00:27:26.914 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:27:26.950 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+00:34:00.698 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:34:00.735 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@60b09f99]
+00:34:03.246 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:34:03.298 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+00:34:53.146 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:34:53.166 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+00:34:55.109 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/1] 
+00:35:09.900 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:35:09.910 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:35:11.394 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:35:11.408 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:35:12.297 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:35:12.306 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:35:13.176 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:35:13.187 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:35:13.551 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:35:13.561 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:36:22.546 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:36:22.555 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:37:19.871 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:37:19.879 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:37:20.944 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:37:20.952 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:37:34.377 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:37:34.387 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:37:39.796 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:37:39.805 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@15727322]
+00:37:39.830 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:37:39.839 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:40:56.296 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:40:56.308 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@5b921622]
+00:40:58.662 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:40:58.671 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:41:18.773 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:41:18.790 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:41:23.580 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:41:23.590 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@125e49dd]
+00:41:23.612 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:41:23.629 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:41:34.202 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/1] 
+00:42:29.031 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:42:29.051 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:42:30.794 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/2] 
+00:45:09.261 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:45:09.272 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@2150ec7c]
+00:45:11.643 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:45:11.651 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+00:45:38.078 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:45:38.098 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:45:43.293 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:45:43.306 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@55c34c4c]
+00:45:43.329 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:45:43.347 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:45:45.232 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/1] 
+00:47:55.540 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:47:55.556 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@12c36bc2]
+00:47:57.825 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:47:57.839 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:47:59.516 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/2] 
+00:50:47.183 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:50:47.212 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@40f97da1]
+00:50:49.983 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:50:50.002 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:50:55.718 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/1] 
+00:52:13.923 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:52:13.943 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:52:20.122 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:52:20.141 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@683da16b]
+00:52:20.188 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:52:20.290 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:52:23.205 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/2] 
+00:54:24.656 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:54:24.669 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@7e36b397]
+00:54:26.850 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:54:26.871 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:54:28.924 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/1] 
+00:56:50.135 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+00:56:50.147 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@3dcdb05e]
+00:56:52.519 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+00:56:52.537 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+00:56:53.882 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/2] 
+01:30:20.229 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:30:20.258 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:30:25.671 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+01:30:25.695 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@5cb20906]
+01:30:25.708 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:30:25.728 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:31:29.795 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:31:29.798 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:06.467 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:06.473 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:16.067 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:16.073 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:17.234 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:17.241 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:18.145 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:18.150 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:19.005 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:19.010 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:19.104 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:19.109 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:19.327 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:19.332 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:19.450 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:19.454 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:19.686 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:19.690 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:32:23.222 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:32:23.229 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:44:25.123 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:44:25.156 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:44:35.045 - log Request: REQUEST method = [GET] path = [/WebShop/messages/filtered] 
+01:44:35.048 - log Request: REQUEST method = [GET] path = [/WebShop/error] 
+01:44:35.051 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{X-Frame-Options=DENY, Cache-Control=no-cache, no-store, max-age=0, must-revalidate, X-Content-Type-Options=nosniff, Vary=Origin, Pragma=no-cache, Expires=0, X-XSS-Protection=0}] responseBody = [{timestamp=Sun Feb 05 01:44:35 CET 2023, status=400, error=Bad Request, trace=org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'key' for method parameter type String is not present
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValueInternal(RequestParamMethodArgumentResolver.java:218)
+	at org.springframework.web.method.annotation.RequestParamMethodArgumentResolver.handleMissingValue(RequestParamMethodArgumentResolver.java:193)
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:114)
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122)
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:181)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:148)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:884)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1080)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:973)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:705)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:814)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at unibl.etf.ip.webshop_ip2023.security.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:69)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:351)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:177)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:400)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:859)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1734)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+, message=Required parameter 'key' is not present., path=/WebShop/messages/filtered}]
+01:44:44.481 - log Request: REQUEST method = [GET] path = [/WebShop/messages/filtered]  parameters = [{key=k}] 
+01:44:44.509 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:44:54.040 - log Request: REQUEST method = [GET] path = [/WebShop/messages/filtered]  parameters = [{key=objavim}] 
+01:44:54.049 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+01:46:41.766 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=passwor, username=user}] 
+01:46:41.777 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [null]
+01:46:47.783 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+01:46:47.788 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@20db6cb1]
+01:49:01.030 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+01:49:01.038 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@2f18b184]
+01:49:02.796 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:49:02.809 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:49:47.926 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+01:49:47.935 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@2477734d]
+01:49:47.948 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:49:47.955 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:51:39.069 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+01:51:39.074 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@5445720a]
+01:51:40.473 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:51:40.484 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:52:24.361 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:52:24.369 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:52:28.270 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:52:28.287 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:52:29.578 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:52:29.602 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:52:30.753 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:52:30.768 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:52:34.186 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/1] 
+01:52:41.756 - log Request: REQUEST method = [GET] path = [/WebShop/messages/filtered]  parameters = [{key=obj}] 
+01:52:41.762 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:53:03.293 - log Request: REQUEST method = [GET] path = [/WebShop/support]  parameters = [{password=password, username=user}] 
+01:53:03.305 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [unibl.etf.ip.webshop_ip2023.model.SupportAc@2a8631b7]
+01:53:03.331 - log Request: REQUEST method = [GET] path = [/WebShop/messages] 
+01:53:03.340 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}, MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:53:09.203 - log Request: REQUEST method = [GET] path = [/WebShop/messages/filtered]  parameters = [{key=ovj}] 
+01:53:09.212 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
+01:53:12.473 - log Request: REQUEST method = [GET] path = [/WebShop/messages/filtered]  parameters = [{key=obj}] 
+01:53:12.482 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=1, content='Kako da objavim ponudu?', userId=1, unread=true}]]
+01:54:08.797 - log Request: REQUEST method = [GET] path = [/WebShop/messages/filtered]  parameters = [{key=obr}] 
+01:54:08.803 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[MessageDTO{id=2, content='Kako da obrišem ponudu?', userId=2, unread=true}]]
+01:54:12.537 - log Request: REQUEST method = [PUT] path = [/WebShop/messages/2] 
+01:54:17.678 - log Request: REQUEST method = [GET] path = [/WebShop/messages/filtered]  parameters = [{key=obr}] 
+01:54:17.684 - logResponse: RESPONSE  method = [GET] ResponseHeaders = [{Vary=Origin}] responseBody = [[]]
