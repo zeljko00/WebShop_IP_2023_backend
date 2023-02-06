@@ -5,3 +5,7 @@
 00:10:06.400 - org.springframework.security.authentication.BadCredentialsException: Bad credentials
 01:37:11.236 - org.springframework.mail.MailParseException: Could not parse mail
 01:39:49.488 - org.springframework.mail.MailParseException: Could not parse mail
+11:51:30.133 - org.springframework.security.authentication.BadCredentialsException: Bad credentials
+13:25:18.912 - org.springframework.security.authentication.BadCredentialsException: Bad credentials
+13:31:18.038 - org.springframework.security.authentication.BadCredentialsException: Bad credentials
+13:31:31.921 - org.springframework.security.authentication.BadCredentialsException: Bad credentials

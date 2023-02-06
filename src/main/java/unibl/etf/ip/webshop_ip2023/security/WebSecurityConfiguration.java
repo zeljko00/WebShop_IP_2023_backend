@@ -62,10 +62,19 @@ public class WebSecurityConfiguration {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
+                .requestMatchers(HttpMethod.POST, "/products/**").authenticated()
+                .requestMatchers(HttpMethod.DELETE, "/products/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/purchases").authenticated()
+                .requestMatchers(HttpMethod.GET, "/purchases/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/messages").authenticated()
+                .requestMatchers(HttpMethod.POST, "/comments").authenticated()
+                .requestMatchers(HttpMethod.POST, "/images").authenticated()
+//                .requestMatchers(HttpMethod.DELETE, "/users/**").authenticated()
                 .requestMatchers(HttpMethod.GET, "/**").permitAll() //enables unauthorized requests
                 .requestMatchers(HttpMethod.POST, "/**").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/**").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/**").permitAll()
+
 //                        .antMatchers("/api/v1/auth/**").permitAll()
 
                 .anyRequest()
