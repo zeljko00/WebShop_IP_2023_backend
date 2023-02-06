@@ -9,4 +9,5 @@ public interface MessageService {
     List<MessageDTO> getAllFiltered(String key);
     void read(long id);
     boolean add(MessageDTO messageDTO);
+    void delete(long id);
 }

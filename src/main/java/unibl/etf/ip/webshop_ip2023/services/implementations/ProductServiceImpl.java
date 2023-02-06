@@ -166,7 +166,9 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }
     }
-
+    public void deleteAdmin(long id){
+        productDAO.deleteById(id);
+    }
     public boolean delete(long id, long user) {
         try {
             Product product = productDAO.findById(id).get();

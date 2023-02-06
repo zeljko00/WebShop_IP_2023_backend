@@ -7,7 +7,7 @@ import unibl.etf.ip.webshop_ip2023.dao.UserDAO;
 import unibl.etf.ip.webshop_ip2023.model.User;
 import unibl.etf.ip.webshop_ip2023.model.dto.UserDTO;
 import unibl.etf.ip.webshop_ip2023.model.enums.AccountStatus;
-import unibl.etf.ip.webshop_ip2023.services.UserService;
+import unibl.etf.ip.webshop_ip2023.services.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import unibl.etf.ip.webshop_ip2023.util.LoggerBean;
 
@@ -25,10 +25,19 @@ public class UserServiceImpl implements UserService {
     private final  Pattern p = Pattern.compile(".*[#,$,%,&,_]+.*");
     private final LoggerBean loggerBean;
 
-    public UserServiceImpl(UserDAO userDAO, ModelMapper modelMapper, LoggerBean loggerBean) {
+    private final CommentService commentService;
+    private final MessageService messageService ;
+    private final ProductService productService;
+    private final PurchaseService purchaseService;
+
+    public UserServiceImpl(UserDAO userDAO, ModelMapper modelMapper, LoggerBean loggerBean, CommentService commentService, MessageService messageService, ProductService productService, PurchaseService purchaseService) {
         this.userDAO = userDAO;
         this.modelMapper = modelMapper;
         this.loggerBean = loggerBean;
+        this.commentService = commentService;
+        this.messageService = messageService;
+        this.productService = productService;
+        this.purchaseService = purchaseService;
     }
 
     public UserDTO findUserByUsername(String username) {
@@ -62,7 +71,11 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserDTO updateUser(UserDTO user) {
+        System.out.println(user.getId());
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
         User userEntity = userDAO.findById(user.getId()).get();
+
         if (userEntity == null || !validateCredentials(user.getUsername(),user.getPassword()))
             return null;
         userEntity.setCity(user.getCity());
@@ -124,7 +137,21 @@ public class UserServiceImpl implements UserService {
     }
 
     public void deleteUserById(long id) {
+        try{
+        User user=userDAO.findById(id).get();
+        user.getComments().stream().forEach(c -> {
+            commentService.delete(c.getId());
+        });
+        user.getMessages().stream().forEach(m -> {
+            messageService.delete(m.getId());
+        });
+        user.getPurchases().stream().forEach(p -> purchaseService.delete(p.getId()));
+        user.getProducts().forEach(p -> productService.deleteAdmin(p.getId()));
+
         userDAO.deleteById(id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public UserDTO checkCredentials(String username, String password) {

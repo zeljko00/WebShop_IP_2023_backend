@@ -54,6 +54,9 @@ public class PurchaseServiceImpl implements PurchaseService {
             return new ArrayList<PurchaseDTO>();
         }
     }
+    public void delete(long id){
+        purchaseDAO.deleteById(id);
+    }
     public PurchaseDTO add(PurchaseDTO purchaseDTO){
         try{
             DateFormat df=new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");

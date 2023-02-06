@@ -15,6 +15,7 @@ public interface ProductService {
     boolean sellProduct(long id);
     ProductDTO add(ProductDTO product, String rand);
     boolean delete(long id,long user);
+    void deleteAdmin(long id);
     ProductDTO getById(long id);
     ProductDTOPage getFiltered(double p1, double p2, String sold, Category category, String title, Pageable pageable);
     ProductDTOPage getFilteredBySeller(double p1, double p2, String sold, Category category, String title, long user, Pageable pageable);

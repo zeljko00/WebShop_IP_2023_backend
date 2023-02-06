@@ -27,6 +27,10 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Message> messages;
 
+    //dodato
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Purchase> purchases;
+
     public List<Message> getMessages() {
         return messages;
     }
@@ -121,5 +125,13 @@ public class User {
 
     public void setStatus(AccountStatus status) {
         this.status = status;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
     }
 }

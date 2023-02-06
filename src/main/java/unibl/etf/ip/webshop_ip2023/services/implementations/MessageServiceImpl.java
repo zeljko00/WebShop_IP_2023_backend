@@ -69,4 +69,7 @@ try {
 }catch(Exception e){
 e.printStackTrace();}
     }
+    public void delete(long id){
+        messageDAO.deleteById(id);
+    }
 }

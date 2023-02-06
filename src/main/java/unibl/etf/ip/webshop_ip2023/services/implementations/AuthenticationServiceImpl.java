@@ -46,7 +46,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public LoginResponse login(String username, String password) throws BlockedAccountException {
+    public LoginResponse login(String username, String password,boolean sendEmail) throws BlockedAccountException {
         System.out.println("Auth service hit! "+username+" "+password);
         LoginResponse loginResponse = null;
         try {
@@ -73,7 +73,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             else if(userDTO.getStatus().equals(AccountStatus.BLOCKED)){
                 throw new BlockedAccountException();
             }
-            else if(userDTO.getStatus().equals(AccountStatus.NOT_ACTIVATED)){
+            //promijenjeno
+            else if(userDTO.getStatus().equals(AccountStatus.NOT_ACTIVATED) && sendEmail==true){
                 int code=generator.nextInt(9000)+1000;
                 System.out.println("put "+userDTO.getUsername()+" "+code);
                 activationCodes.put(userDTO.getUsername(),Integer.toString(code));

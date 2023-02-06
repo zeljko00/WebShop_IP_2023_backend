@@ -37,7 +37,7 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request){
         try{
-            return  new ResponseEntity<LoginResponse>(authenticationService.login(request.getUsername(),request.getPassword()),HttpStatus.OK);
+            return  new ResponseEntity<LoginResponse>(authenticationService.login(request.getUsername(),request.getPassword(),true),HttpStatus.OK);
         }catch(Exception e){
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -56,7 +56,7 @@ public class UserController {
         UserDTO userDTO=userService.register(user);
         if(userDTO!=null)
             try {
-                return new ResponseEntity<LoginResponse>(authenticationService.login(user.getUsername(), user.getPassword()), HttpStatus.OK);
+                return new ResponseEntity<LoginResponse>(authenticationService.login(user.getUsername(), user.getPassword(),false), HttpStatus.OK);
             }catch(Exception e){
                 e.printStackTrace();
                 return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
